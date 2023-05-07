@@ -1,0 +1,51 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: #231f20;
+  font-family: $chiswick;
+  line-height: 1.7;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+button {
+  color: unset;
+}
+
+a[type=submit] {
+  // anchor tags with this class have a type="submit" attribute, making it look an 'appleish' button
+  /* stylelint-disable property-no-vendor-prefix */
+  -webkit-appearance: none;
+  -webkit-border-radius: none;
+  /* stylelint-enable property-no-vendor-prefix */
+}

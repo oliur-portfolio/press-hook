@@ -1,0 +1,94 @@
+/** @define hero--top-space */
+.hero--top-space {
+    margin-top: 60px;
+}
+
+/** @define features-hero-area */
+.features-hero-area {
+    padding-top: 55px;
+    padding-bottom: 85px;
+
+    @media screen and (max-width: $tablet) {
+        padding-bottom: 35px;
+    }
+}
+
+/** @define red-box-heading */
+.red-box-heading {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    background: $red-semi;
+    border: 1px solid $red;
+    padding: 4px 15px;
+
+    // .red-box-heading--rounded
+    &--rounded {
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+    }
+
+    // .red-box-heading__icon
+    &__icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    // .red-box-heading__text
+    &__text {
+        color: $red;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 400;
+        min-height: auto;
+        margin-bottom: 0;
+        letter-spacing: 1px;
+    }
+}
+
+/** @define features-hero */
+.features-hero {
+    max-width: 776px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (max-width: $desktop) {
+        max-width: 500px;
+    }
+
+    // .features-hero__title
+    &__title {
+        font-weight: 300;
+        font-size: 74px;
+        line-height: 94px;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+
+        // .features-hero__title-block
+        &-block {
+            @media screen and (max-width: $tablet) {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: $desktop) {
+            font-size: 54px;
+            line-height: 70px;
+        }
+
+        @media screen and (max-width: $tablet) {
+            font-size: 40px;
+            line-height: 50px;
+            margin-top: 30px;
+            margin-bottom: 22px;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+/** @define features-messaging-area */
+.features-messaging-area {
+    padding-bottom: 60px !important;
+    overflow: hidden;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/** @define features-messaging */
+.features-messaging {
+    // .features-messaging__section-heading
+    &__section-heading {
+        width: 100%;
+        max-width: 766px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @media screen and (max-width: $desktop) {
+            max-width: 600px;
+        }
+
+        @media screen and (max-width: $tablet) {
+            max-width: 100%;
+            padding: 0 22px;
+        }
+    }
+
+    // .features-messaging__title
+    &__title {
+        margin-bottom: 32px;
+
+        @media screen and (max-width: $tablet) {
+            margin-bottom: 22px;
+        }
+    }
+
+    // .features-messaging__images
+    &__images {
+        position: relative;
+        width: 1020px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+
+        @media screen and (max-width: $desktop) {
+            width: 700px;
+            margin-top: 30px;
+        }
+
+        @media screen and (max-width: $tablet) {
+            width: 100%;
+            padding: 0 22px;
+            margin-top: 20px;
+        }
+
+        // .features-messaging__images-main
+        &-main {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            position: relative;
+            z-index: 10;
+        }
+
+        // .features-messaging__images-right-line
+        &-right-line {
+            position: absolute;
+            top: 0;
+            right: -200px;
+
+            @media screen and (max-width: $desktop) {
+                display: none;
+            }
+        }
+
+        // .features-messaging__images-left-line
+        &-left-line {
+            position: absolute;
+            bottom: 50px;
+            left: -150px;
+
+            @media screen and (max-width: $desktop) {
+                display: none;
+            }
+        }
+    }
+}

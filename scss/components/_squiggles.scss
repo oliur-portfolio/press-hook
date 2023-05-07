@@ -1,0 +1,33 @@
+.squiggle-underline {
+  position: relative;
+
+  &--short {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.4em;
+      left: -0.5rem;
+      right: -0.5rem;
+      height: 0.5em;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      background-image: url('../../../../../../config/static/images/svg/underline-short.svg');
+    }
+  }
+
+  &--long {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.4em;
+      left: -0.5rem;
+      right: -0.5rem;
+      height: 0.5em;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      background-image: url('../../../../../../config/static/images/svg/underline-long.svg');
+    }
+  }
+}

@@ -1,0 +1,150 @@
+.testimonial-container {
+  max-width: 887px;
+  background: $white;
+  border: 2px dashed #262121;
+  border-radius: 8px;
+  padding: 58px 128px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-top: 125px;
+
+  @media screen and (max-width: $tablet) {
+    padding: 40px 24px;
+    margin-top: 70px;
+  }
+
+  @media screen and (max-width: 950px) and (min-width: $tablet) {
+    max-width: 700px;
+    padding: 58px 45px;
+  }
+
+  &__image {
+    left: 50%;
+    top: -16px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 100%;
+    background-color: $white;
+    height: 121px;
+    width: 121px;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+    transition: all 0.5s ease-out;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: $tablet) {
+      top: -10px;
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__right-arrow {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    border-radius: 100%;
+    cursor: pointer;
+
+    @media screen and (max-width: $tablet) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__left-arrow {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    border-radius: 100%;
+    cursor: pointer;
+
+    @media screen and (max-width: $tablet) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.testimonial-embla {
+  overflow: hidden;
+}
+
+.testimonial-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.testimonial {
+  position: relative;
+  min-width: 100%;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__quote {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &__name {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 28px;
+    letter-spacing: 0.1em;
+    color: $red;
+    margin-top: 13px;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 10px;
+      line-height: 28px;
+    }
+  }
+}
+
+.testimonial-slide-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 18px;
+
+  @media screen and (max-width: $tablet) {
+    margin-top: 30px;
+    gap: 10px;
+  }
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.14);
+    border-radius: 100%;
+    cursor: pointer;
+
+    @media screen and (max-width: $tablet) {
+      width: 7px;
+      height: 7px;
+    }
+
+    &--selected {
+      background-color: $white;
+    }
+  }
+}

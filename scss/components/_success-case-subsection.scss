@@ -1,0 +1,41 @@
+/** @define column-content-container */
+.column-content-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    row-gap: 40px;
+    flex-wrap: wrap;
+}
+
+/** @define column-content-item */
+.column-content-item {
+    max-width: 320px;
+
+    // column-content-item__icon
+    &__icon {
+        text-align: center;
+    }
+
+    // column-content-item__headline
+    &__headline {
+        text-align: center;
+        font-family: $canela;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 32px;
+        color: $black;
+        margin-bottom: 24px;
+        margin-top: 24px;
+    }
+
+    // column-content-item__body
+    &__body {
+        font-family: $chiswick;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px;
+        color: $black;
+    }
+}

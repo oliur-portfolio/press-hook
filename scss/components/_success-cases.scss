@@ -1,0 +1,254 @@
+.step-list-item {
+  display: flex;
+  margin-bottom: 30px;
+
+  &__icon {
+    margin-right: 30px;
+
+    @media screen and (max-width: 962px) {
+      margin-right: 20px;
+    }
+  }
+
+  &__content {
+    width: 280px;
+
+    @media screen and (max-width: 962px) {
+      width: 260px;
+    }
+  }
+
+  &__step {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 962px) {
+      margin-bottom: 2px;
+    }
+  }
+
+  &__detail {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+.success-case-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 1200px;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  @media screen and (max-width: $tablet) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__inner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 75px;
+    position: relative;
+
+    @media screen and (max-width: $tablet) {
+      margin-top: 30px;
+    }
+  }
+
+  &__right-arrow {
+    position: absolute;
+    top: calc(50% + 18px);
+    border-radius: 100%;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    right: 0;
+    margin-right: 10px;
+
+    @media screen and (max-width: $tablet) {
+      height: 18px;
+      width: 18px;
+      right: -30px;
+      top: calc(50% + 10px);
+    }
+  }
+
+  &__left-arrow {
+    position: absolute;
+    left: 0;
+    top: calc(50% + 18px);
+    border-radius: 100%;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+
+    @media screen and (max-width: $tablet) {
+      height: 18px;
+      width: 18px;
+      left: -30px;
+      top: calc(50% + 10px);
+    }
+  }
+
+  &__accent-squiggle {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    bottom: -30px;
+    left: 50px;
+
+    @media screen and (max-width: $tablet) {
+      bottom: -45px;
+      left: -40px;
+    }
+  }
+}
+
+.success-case-embla {
+  overflow: hidden;
+  padding-top: 96px;
+
+  @media screen and (max-width: $tablet) {
+    padding-top: 30px;
+  }
+}
+
+.success-case-content {
+  text-align: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 25%;
+
+  @media screen and (max-width: $tablet) {
+    grid-auto-columns: 50%;
+  }
+}
+
+.success-case-item {
+  &__inner {
+    position: relative;
+    border: 2px dashed #262121;
+    border-radius: 8px;
+    padding: 70px 36px 27px 36px;
+    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: $beige;
+
+    @media screen and (max-width: $tablet) {
+      padding: 30px 17px 16px 17px;
+      border: 1.5px dashed #262121;
+    }
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 50%;
+    top: -20px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 100%;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+    height: 116px;
+    width: 116px;
+    object-fit: contain;
+
+    @media screen and (max-width: $tablet) {
+      height: 40px;
+      width: 40px;
+      top: -10px;
+    }
+  }
+
+  &__brand {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    margin-bottom: 9px;
+    min-height: 66px;
+
+    @media screen and (max-width: $tablet) {
+      min-height: 35px;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  &__stat {
+    font-family: $mono;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 46px;
+    line-height: 64px;
+    color: $red;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+
+  &__stat-detail {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    margin-bottom: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 12px;
+      line-height: 12px;
+      width: 70px;
+      margin-top: 10px;
+    }
+  }
+
+  &__stat-pointer {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__stat-timing {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+}

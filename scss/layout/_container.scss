@@ -1,0 +1,55 @@
+/*
+
+    Containers are broadly used blocks that handle the layout.
+    The rules below set modifiers for the generic container class.
+
+    Modifiers:
+    --jumbotron - The Jumbotron displaying cta button or search and industry cards
+    --tags-section - Home Page tags right after them jumbotron
+    --marketing - Marketing sections on Home Page
+    --testimonial
+
+*/
+
+/** @define container **/
+.container {
+  // .container--jumbotron
+  &--jumbotron {
+    background-color: $beige;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    width: 100%;
+    height: 565px;
+    margin: 0;
+    max-width: unset;
+
+    @media screen and (max-width: $tablet) {
+      height: auto;
+    }
+  }
+
+  // .container--tags-section
+  &--tags-section {
+    margin-top: 117px;
+    max-width: $max-width;
+    width: 100%;
+    padding: 0 48px;
+  }
+
+  // .container--maketing
+  &--marketing {
+    margin-top: 124px;
+
+    @media screen and (max-width: $tablet) {
+      margin-top: 50px;
+    }
+  }
+
+  &--testimonial {
+    background-color: $beige;
+    height: 630px;
+    max-width: unset;
+    width: 100%;
+  }
+}

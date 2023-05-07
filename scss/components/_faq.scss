@@ -1,0 +1,274 @@
+/*
+
+  General purpose elements on the homepage
+
+  Blocks:
+  .faq - the faq section
+
+  Elements:
+
+*/
+
+/** @define faq **/
+.faq {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0 !important;
+
+  @media screen and (max-width: $tablet) {
+    flex-flow: column nowrap;
+  }
+
+  // .faq__container
+  &__container {
+    width: 50%;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
+
+    &:first-of-type {
+      padding: 115px 103px 0;
+
+      // Right side border
+      background-image: linear-gradient(
+        to bottom,
+        $black 0,
+        $black 25%,
+        transparent 25%
+      );
+      background-position: right;
+      background-repeat: repeat-y;
+      background-size: 1px 4px;
+
+      @media screen and (max-width: $desktop) {
+        padding: 68px 58px 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        padding: 44px 150px 41px 24px;
+
+        // Bottom side border
+        background-image: linear-gradient(
+          to left,
+          $black 0,
+          $black 25%,
+          transparent 25%
+        );
+        background-position: bottom;
+        background-repeat: repeat-x;
+        background-size: 4px 1px;
+      }
+    }
+  }
+
+  // .faq__item
+  &__item {
+    background-image: linear-gradient(
+      to left,
+      $black 0,
+      $black 25%,
+      transparent 25%
+    );
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: 4px 1px;
+
+    &:last-of-type {
+      background: none;
+    }
+  }
+
+  // .faq__title
+  &__title {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    height: 145px;
+    padding: 0 47px;
+    cursor: pointer;
+    position: relative;
+    background-image: linear-gradient(
+      to left,
+      $black 0,
+      $black 25%,
+      transparent 25%
+    );
+
+    /*
+     The following rules are a workaround for waiting for the accordion transition to happen
+     before showing/hiding the fake border background
+    */
+
+    background-position-y: 101%; // This position is hidden
+    background-repeat: repeat-x;
+    background-size: 4px 1px;
+    transition: all;
+    transition-delay: 0.5s;
+
+    // .faq__title--expanded
+    &--expanded {
+      background-position-y: 100%;
+      transition-delay: 0s;
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    @media screen and (max-width: $desktop) {
+      font-size: 20px;
+      line-height: 24px;
+      height: 98px;
+      padding-right: 70px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      font-size: 16px;
+      line-height: 22px;
+      height: 98px;
+      padding: 0 24px;
+    }
+
+    &::after {
+      content: '';
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      background-image: url('../../images/svg/chevron_down_red.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      right: 47px;
+      transition: all 0.5s;
+
+      @media screen and (max-width: $tablet) {
+        right: 24px;
+      }
+    }
+  }
+
+  // .faw__answer
+  &__answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+  }
+
+  // .faw__answer-wrapper
+  &__answer-wrapper {
+    margin: 47px;
+
+    @media screen and (max-width: $tablet) {
+      margin: 36px 24px;
+    }
+  }
+
+  // .faw__answer-text
+  &__answer-text {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+
+    @media screen and (max-width: $desktop) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  // .faw__answer-link
+  &__answer-link {
+    color: $red;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover,
+    &:visited,
+    &:active {
+      color: $red;
+      text-decoration: underline;
+    }
+  }
+
+  // .faq__pricing-grid
+  &__pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(176px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+
+  // .faq__pricing-card
+  &__pricing-card {
+    border: 1px dashed #262121;
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 176px;
+  }
+
+  // .faw__tier
+  &__tier {
+    background-color: white;
+    border-bottom: 1px solid $red;
+    padding: 13px;
+    text-align: center;
+  }
+
+  // .faw__tier-name
+  &__tier-name {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: $red;
+  }
+
+  // .faw__tier-price
+  &__tier-price {
+    font-family: $mono;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: $black;
+  }
+
+  // .faq__tier-description
+  &__tier-description {
+    padding: 13px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // .faq__tier-description-text
+  &__tier-description-text {
+    text-align: center;
+    margin: 0;
+  }
+
+  // .faw__pricing-details-link
+  &__pricing-details-link {
+    display: block;
+    text-align: center;
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: $darkgrey;
+
+    &:hover,
+    &:visited,
+    &:active {
+      text-decoration-line: underline;
+      color: $darkgrey;
+    }
+  }
+}

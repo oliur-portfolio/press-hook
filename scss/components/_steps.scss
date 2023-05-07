@@ -1,0 +1,43 @@
+.step-list-item {
+    display: flex;
+    margin-bottom: 30px;
+
+    &__icon {
+        margin-right: 30px;
+
+        @media screen and (max-width: 962px) {
+            margin-right: 20px;
+        }
+    }
+
+    &__content {
+        width: 280px;
+
+        @media screen and (max-width: 962px) {
+            width: 260px;
+        }
+    }
+
+    &__step {
+        font-family: $chiswick;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 962px) {
+            margin-bottom: 2px;
+        }
+    }
+
+    &__detail {
+        font-family: $chiswick;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 28px;
+    }
+}

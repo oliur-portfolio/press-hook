@@ -1,0 +1,209 @@
+/*
+
+  General purpose elements on the homepage
+
+  Blocks:
+  .how-it-works - the main element class, no styles
+
+  Elements:
+
+*/
+
+/** @define how-it-works **/
+.how-it-works {
+  // .how-it-works__sections
+  &__sections {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  // .how-it-works__title
+  &__title {
+    font-family: $canela;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 64px;
+    text-align: center;
+    color: $black;
+    margin-bottom: 112px;
+    padding-bottom: 26px;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-image: url('../../../../../../config/static/images/svg/scribble-underline-red.svg');
+
+    @media screen and (max-width: $tablet) {
+      font-size: 42px;
+      line-height: 48px;
+      margin-bottom: 56px;
+      background-size: 70%;
+      padding-bottom: 20px;
+    }
+
+    @media screen and (max-width: $mobile) {
+      font-size: 26px;
+      line-height: 36px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+    }
+  }
+
+  // .how-it-works__section
+  &__section {
+    display: none;
+    flex-flow: row nowrap;
+
+    &--selected {
+      display: flex;
+    }
+
+    @media screen and (max-width: $tablet) {
+      flex-flow: column-reverse nowrap;
+    }
+  }
+
+  // .how-it-works__video-container
+  &__video-container {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-right: 150px;
+
+    @media screen and (max-width: $navigation-mobile) {
+      padding-right: 50px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      padding-right: 0;
+      align-items: center;
+    }
+  }
+
+  // .how-it-works__video
+  &__video {
+    max-width: 287.77px;
+    box-shadow: 0 4px 40px rgba(0 0 0 / 14%);
+    border-radius: 12px;
+  }
+
+  // .how-it-works__section-content
+  &__section-content {
+    display: flex;
+    flex-flow: column wrap;
+    padding-left: 12px;
+    max-width: 422px;
+
+    @media screen and (max-width: $tablet) {
+      padding: 0 24px;
+    }
+  }
+
+  // .how-it-works__section-steps
+  &__section-steps {
+    margin-bottom: 20px;
+  }
+
+  // .how-it-works__step
+  &__step {
+    width: 100%;
+    font-family: $chiswick;
+    font-style: normal;
+    padding-left: 78px;
+    background-repeat: no-repeat;
+
+    &[data-step='1'] {
+      background-image: url('../../images/svg/step1.svg');
+    }
+
+    &[data-step='2'] {
+      background-image: url('../../images/svg/step2.svg');
+    }
+
+    &[data-step='3'] {
+      background-image: url('../../images/svg/step3.svg');
+    }
+  }
+
+  // .how-it-works__step-title
+  &__step-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  // .how-it-works__step-text
+  &__step-text {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 20px;
+    margin-bottom: 32px;
+  }
+
+  // .how-it-works__pricing_details
+  &__pricing_details {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 32px;
+    text-align: center;
+    text-decoration: underline;
+    width: 100%;
+    border: 1px solid $red;
+    border-radius: 6px;
+    color: $red;
+    display: block;
+    height: 32px;
+
+    &:hover,
+    &:visited,
+    &:active {
+      color: $red;
+      text-decoration: underline;
+    }
+  }
+
+  // .how-it-works__section-menu
+  &__section-menu {
+    display: none;
+    flex-flow: row nowrap;
+    gap: 40px;
+  }
+
+  // .how-it-works__menu-option
+  &__menu-option {
+    padding-bottom: 40px;
+  }
+
+  // .how-it-works__menu-option-link
+  &__menu-option-link {
+    font-family: $chiswick;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $darkgrey;
+    text-decoration: none;
+
+    &:visited,
+    &:active {
+      color: $darkgrey;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &--selected {
+      text-decoration-line: underline;
+      color: $red;
+
+      &:visited,
+      &:active {
+        text-decoration-line: underline;
+        color: $red;
+      }
+    }
+  }
+}

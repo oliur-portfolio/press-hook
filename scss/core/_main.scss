@@ -1,0 +1,78 @@
+a,
+a:visited,
+a:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: $black;
+}
+
+h1 {
+  font-family: $canela;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 48px;
+}
+
+h2 {
+  font-family: $canela;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+h3 {
+  font-family: $mono;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+h4 {
+  font-family: $canela;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+h5 {
+  font-family: $chiswick;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-family: $chiswick;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+p {
+  font-family: $chiswick;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
+  min-height: 26px;
+  margin-bottom: 13px;
+}
+
+main {
+  display: block;
+
+  /* For IE11 support */
+}

@@ -1,0 +1,72 @@
+// breakpoints
+$mobile: 400px;
+$tablet: 800px;
+$content-width: 1000px;
+$desktop: 1200px;
+$max: 1920px;
+$nav-height: 65px;
+$max-width: 1920px; // Max width used by top level wrapper/containers like .navigation bar
+$navigation-height: 65px; // Height of the .navigation bar used to space the main .container
+$navigation-mobile: 1140px; // Breakpoint to switch navigation bar menu to a dropdown menu
+$navigation-mobile-min-width: calc($navigation-mobile + 1px);
+$navigation-logo-scale: 1399px; // Breakpoint to switch navbar logo to scale
+$navigation-logo-icon: 472px;
+$notifications-mobile: 500px; // Breakpoint to switch notifications dropdown to full width
+
+// colors
+$white: #fff;
+$beige: #fffaf5;
+$darkbeige: #fbf0e6;
+$beigehover: #faf2eb;
+$black: #262121;
+$dark-black: #000;
+$btn: #d2281a;
+$grey: #a8a6a6;
+$medium-grey: #828282;
+$light-grey: #e0e0e0;
+$dark-grey: #6c6c6c;
+$spanish-grey: #9a9a9a;
+$red: #d2281a;
+$red-semi: #f8dfdd;
+$red-transparent: rgba(210, 40, 26, 0.11);
+$button-disabled-red: rgba(210, 40, 26, 0.7);
+$green: #39b15b;
+$green-transparent: rgba(57, 177, 91, 0.11);
+$btn: #d2281a;
+$btn-hover: rgb(210 40 26 / 80%);
+$cta-btn-hover: #78231c;
+$tags: #faf2eb;
+$tags-grey: #f6f6f6;
+$tags-border: #c8c8c8;
+$lightgrey: #e4e4e4;
+$mediumgrey: #e0e0e0;
+$darkgrey: #9f9f9f;
+$highlightbox-bg: rgb(245 245 245 / 40%);
+$highlightbox-border-color: #e9e9e9;
+$light-pinkish: #f8edec;
+$quick-silver: #a4a4a4;
+$platinum: #e7e7e7;
+$anchor: #337ab7;
+$meat-brown: #e0c42f;
+$cornsilk: #fff8d6;
+$honeydew: #eaf7ee;
+$linen: #faf2eb;
+$raisi-black: #262121;
+$cultured: #f4f4f4;
+$Gray87: #dedede;
+$equator: rgba(221, 186, 98, 0.12);
+$orange-gold: #d2a120;
+$price-border: #b8b8b8;
+$price-red-semi: #ffe3e3;
+$price-dark-grey: #5a5a5a;
+$price-light-grey: #7b7b7b;
+$price-selected-label: #c8c8c8;
+$price-selected-label-border: #848484;
+$price-features-text: #656565;
+$price-tags-text: #696969;
+
+// fonts
+$chiswick: "Chiswick Grotesque Web", "Helvetica Neue", arial, sans-serif;
+$canela: "Canela Web", serif;
+$source-sans: "Source Sans Pro", helvetica, sans-serif;
+$mono: "DM Mono", monospace;

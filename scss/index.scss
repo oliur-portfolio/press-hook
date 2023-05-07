@@ -1,0 +1,31 @@
+@import "core/variables"; // Global variables for SCSS
+@import "core/resets"; // Reseting some standard styles
+@import "core/main"; // Applying some general style to common tags
+@import "core/generic"; // Applying some general style with generic classes
+@import "core/utils"; // Import utils styles to be used across the application
+
+@import "layout/fonts"; // Import font types
+
+@import "layout/container"; // Custom container modifiers for the home app
+
+@import "pages/homepage"; // Home Page ruleset
+@import "pages/howitworks"; // How It Works Page ruleset
+@import "pages/terms"; // Terms and Conditions Page ruleset
+@import "pages/features"; // Features Page ruleset
+@import "pages/price"; // Price Page ruleset
+
+@import "components/slider"; // A pure CSS slider used for testimonials on the home page
+@import "components/containers"; // custom containers
+@import "components/testimonials";
+@import "components/outlets";
+@import "components/squiggles";
+@import "components/stats";
+@import "components/cta-form";
+@import "components/cta-btn";
+@import "components/icon-list";
+@import "components/hero";
+@import "components/success-cases";
+@import "components/success-case-subsection";
+@import "components/faq"; // FAQ section
+@import "components/explore_brands"; // The explore brands section
+@import "components/home-hero"; // Home Top Hero section

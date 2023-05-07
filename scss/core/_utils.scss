@@ -1,0 +1,294 @@
+/*
+
+  _utils.scss
+
+  A place to store utility styles that can be used globally.
+
+  These should be classes that have no dependency on an app, other class
+  or object.
+
+  Blocks:
+  .loading - Adds an animated '...' after text content
+  .ph-tooltip - Adds a Press Hook styled tooltip to an element
+  .ph-tooltip--big - Adds a Press Hook styled large tooltip to an element
+  .cta-container - a container for .cta-btn elements
+*/
+
+/** @define loading-ellipsis */
+.loading-ellipsis {
+  // .loading-ellipsis::after
+  &::after {
+    display: inline-block;
+    animation: load steps(1, end) 1s infinite;
+    content: '';
+  }
+}
+
+@keyframes load {
+  0% {
+    content: '';
+  }
+
+  25% {
+    content: '.';
+  }
+
+  50% {
+    content: '..';
+  }
+
+  75% {
+    content: '...';
+  }
+
+  100% {
+    content: '';
+  }
+}
+
+/** @define ph-tooltip */
+.ph-tooltip {
+  position: relative;
+
+  &::before {
+    content: attr(data-text);
+    /* The tooltips text */
+    position: absolute;
+    z-index: 9;
+
+    /* vertically center */
+    top: 50%;
+    transform: translateY(-100%);
+
+    /* move to left */
+    right: 100%;
+
+    /* and add a small left margin */
+    margin-right: 5px;
+
+    /* basic styles */
+    border-radius: 4px;
+    background: rgb(250 242 235);
+    color: #000;
+    text-align: left;
+    font-size: 12.5px;
+    height: auto;
+    line-height: 18px;
+    padding: 2px 5px;
+    border: 1px solid black;
+    width: max-content;
+    max-width: 200px;
+
+    // Animation
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &:hover::before {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  // .ph-tooltip--focus
+  &--focus {
+    &:hover::before {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &:focus-within::before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  // .ph-tooltip--bottom-align
+  &--bottom-align::before {
+    transform: translateX(-50%);
+    left: 50%;
+    margin: initial;
+    right: initial;
+    top: 100%;
+    margin-top: 5px;
+  }
+
+  // .ph-tooltip--right-align
+  &--right-align::before {
+    right: initial;
+    margin: initial;
+    left: 100%;
+    margin-left: 5px;
+  }
+
+  // .ph-tooltip--dark
+  &--dark::before {
+    background: rgba(0 0 0 / 80%);
+    color: $white;
+    border: 0;
+  }
+
+  // .ph-tooltip--grey
+  &--grey::before {
+    background: rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+  }
+
+  // .ph-tooltip--arrow-left
+  &--arrow-left {
+    &::before {
+      transform: translate(0, -50%);
+      margin-left: 13px;
+      border: 0;
+      font-family: 'DM Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      padding: 11px;
+      max-width: 400px;
+      min-height: 50px;
+    }
+
+    &::after {
+      // Create a triangle on the left side of the tooltip
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.5s;
+      transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid rgba(0, 0, 0, 0.65);
+      top: 10px;
+      right: initial;
+      margin: initial;
+      left: 100%;
+      margin-left: 5px;
+    }
+
+    &:hover::after {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  // .ph-tooltip--overflow
+  &--overflow::before {
+    max-width: unset;
+  }
+
+  // .ph-tooltip--inherit-width
+  &--inherit-width::before {
+    max-width: inherit;
+  }
+
+  // .ph-tooltip--delay
+  &--delay {
+    &::before {
+      transition-delay: unset;
+    }
+
+    &:hover::before {
+      transition-delay: 1s;
+    }
+  }
+
+  // .ph-tooltip--only-once-done
+  &--only-once-done {
+    &::before {
+      display: none;
+    }
+  }
+
+  // .ph-tooltip--inverted
+  &--inverted {
+    &::before {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &:hover::before {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &--multiline {
+    &::before {
+      max-width: 191px;
+      font-family: $chiswick;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14px;
+      padding: 15px;
+      text-align: center;
+    }
+  }
+
+  &--user-icon-align {
+    &::before {
+      margin: initial;
+      right: initial;
+      top: 100%;
+      margin-top: 5px;
+      transform: translate(-70%);
+    }
+  }
+}
+
+/** @define cta-container */
+.cta-container {
+  margin-top: 80px;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: $tablet) {
+    margin-top: 40px;
+  }
+
+  // .cta-container--center
+  &--center {
+    text-align: center;
+  }
+
+  // .cta-container--explore
+  &--explore {
+    margin-top: 32px;
+  }
+
+  // .cta-container--flex
+  &--flex {
+    display: flex;
+    gap: 15px;
+
+    @media screen and (max-width: 436px) {
+      flex-direction: column;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
+  &__flex-item {
+    @media screen and (max-width: 436px) {
+      margin-top: 0 !important;
+
+      &:last-of-type {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  // .cta-container--mt-small
+  &--mt-small {
+    margin-top: 40px;
+
+    @media screen and (max-width: $tablet) {
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+/** @define brand **/
+.brand {
+  // .brand__logo
+  &__logo {
+    padding: 3px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid #262121;
+    object-fit: cover;
+
+    &--small {
+      padding: 2px;
+      height: 25px;
+      width: 25px;
+
+      @media screen and (max-width: $tablet) {
+        padding: 1px;
+        height: 15px;
+        width: 15px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+/** @define user **/
+.user {
+  // .user__avatar
+  &__avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid $black;
+    object-fit: cover;
+  }
+}

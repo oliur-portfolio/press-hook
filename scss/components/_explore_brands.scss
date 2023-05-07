@@ -1,0 +1,43 @@
+/** @define explore-brands **/
+.explore-brands {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  @media screen and (max-width: $tablet) {
+    flex-flow: column nowrap;
+    padding: 0;
+  }
+
+  // .explore-brands__container
+  &__container {
+    width: 50%;
+    margin-top: 6px;
+
+    @media screen and (max-width: $tablet) {
+      width: auto;
+      margin-top: unset;
+    }
+
+    // .explore-brands__container--padding
+    &--padding {
+      padding: 0 104px;
+
+      @media screen and (max-width: $tablet) {
+        padding: 50px 23px 32px;
+      }
+    }
+
+    // .explore-brands__container--scribble-pointer
+    &--scribble-pointer {
+      background-image: url('../../../../../../config/static/images/svg/scribble_pointer_ltr.svg');
+      background-repeat: no-repeat;
+      background-position: bottom 30px right 52px;
+
+      @media screen and (max-width: $tablet) {
+        background-image: url('../../../../../../config/static/images/svg/scribble_pointer_ttb.svg');
+        background-position: bottom right 100px;
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+/*
+
+  A simple CSS-only slider, no JS.
+  Currently supports up to 3 items, to add more items the __inner width must me incresed
+  and __nav:checked:nth-of-type(n) must be added
+
+  Blocks:
+  .css-slider - the slider container
+
+  Elements:
+  __nav - the navigation dots
+  __inner - the overflow element with all items
+  __contents - each slider item
+  __image - image content
+  __caption - caption content
+  __txt - text content
+
+*/
+
+/** @define css-slider **/
+.css-slider {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  -webkit-box-align: end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+
+  // .css-slider__nav
+  &__nav {
+    width: 8px;
+    height: 8px;
+    margin: 0 12px 160px;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    appearance: none;
+    backface-visibility: hidden;
+    background: rgb(38 33 33 / 15%);
+
+    @media screen and (max-width: $tablet) {
+      margin: 0 12px 75px;
+    }
+  }
+
+  // .css-slider__nav:checked
+  &__nav:checked {
+    animation: check 0.4s linear forwards;
+    background: $red;
+  }
+
+  // .css-slider__inner
+  &__inner {
+    position: absolute;
+    top: 86px;
+    left: 0;
+    width: 200%; // this value must increase accordingly to the number of items on the slider
+    transition: left 0.4s;
+    display: flex;
+    flex-flow: row nowrap;
+
+    @media screen and (max-width: $tablet) {
+      top: 30px;
+    }
+  }
+
+  // Rules below are not on BEM standards but are required for the CSS slider to work
+  // It also determines how many items the slider can have
+  &__nav:checked:nth-of-type(1) ~ &__inner {
+    left: 0%;
+  }
+
+  &__nav:checked:nth-of-type(2) ~ &__inner {
+    left: -100%;
+  }
+
+  &__nav:checked:nth-of-type(3) ~ &__inner {
+    left: -200%;
+  }
+
+  // .css-slider__contents
+  &__contents {
+    height: 100%;
+    text-align: center;
+    display: box;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex: 1;
+    flex-flow: column nowrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -ms-flex-align: center;
+  }
+
+  // .css-slider__image
+  &__image {
+    display: inline-block;
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 43px;
+
+    @media screen and (max-width: $tablet) {
+      margin-bottom: 30px;
+    }
+  }
+
+  // .css-slider__caption
+  &__caption {
+    font-family: $chiswick;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $red;
+    line-height: 20px;
+  }
+
+  // .css-slider__txt
+  &__txt {
+    color: $black;
+    max-width: 811px;
+    font-family: $chiswick;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

@@ -1,0 +1,25 @@
+.featured-outlets-container {
+    display: flex;
+    justify-content: center;
+    gap: 65px;
+    row-gap: 35px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 75px;
+
+    @media screen and (max-width: 962px) {
+        margin-top: 50px;
+        gap: 40px;
+        row-gap: 35px;
+    }
+}
+
+.featured-outlet {
+    opacity: 0.5;
+
+    @media screen and (max-width: 962px) {
+        max-width: 65px;
+    }
+}

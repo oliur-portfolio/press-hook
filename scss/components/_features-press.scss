@@ -1,0 +1,143 @@
+/** @define features-press-area */
+.features-press-area {
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/** @define features-press */
+.features-press {
+    // .features-press__section-heading
+    &__section-heading {
+        width: 100%;
+        max-width: 766px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // .features-press__title
+    &__title {
+        margin-bottom: 32px;
+    }
+
+    // .features-press-list
+    &-list {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+
+        @media screen and (max-width: $tablet) {
+            gap: 50px;
+        }
+
+        // .features-press-list__item
+        &__item {
+            position: relative;
+            cursor: pointer;
+
+            // .features-press-list__item--active
+            &--active {
+                // .features-press-list__item--active .features-press-list__item-title
+                .features-press-list__item-title {
+                    color: $dark-black;
+                }
+
+                // .features-press-list__item--active .features-press-list__item-cicle
+                .features-press-list__item-cicle {
+                    opacity: 1;
+                }
+            }
+
+            // .features-press-list__item-cicle
+            &-cicle {
+                opacity: 0;
+                object-fit: contain;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 185px;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+
+                // .features-press-list__item-cicle--small
+                &--small {
+                    width: 120px;
+                }
+            }
+
+            // .features-press-list__item-title
+            &-title {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 22px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: $medium-grey;
+                margin-bottom: 0;
+                min-height: auto;
+                position: relative;
+                z-index: 10;
+                transition: all 0.9s ease;
+                -webkit-transition: all 0.9s ease;
+                -moz-transition: all 0.9s ease;
+                -ms-transition: all 0.9s ease;
+                -o-transition: all 0.9s ease;
+
+                @media screen and (max-width: $tablet) {
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+
+    // .features-press__images
+    &__images {
+        position: relative;
+        width: 844px;
+        height: 394px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 65px;
+
+        @media screen and (max-width: $desktop) {
+            width: 100%;
+            height: 336px;
+        }
+
+        @media screen and (max-width: $tablet) {
+            width: 320px;
+            height: 145px;
+            margin-top: 45px;
+        }
+
+        // .features-press__images-main
+        &-main {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            -webkit-transition: opacity 0.8s ease-in-out;
+            -moz-transition: opacity 0.8s ease-in-out;
+            -ms-transition: opacity 0.8s ease-in-out;
+            -o-transition: opacity 0.8s ease-in-out;
+
+            // .features-press__images-main--active
+            &--active {
+                z-index: 1;
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+/** @define terms **/
+.terms {
+  // .terms__iframe
+  &__iframe {
+    width: 100%;
+    height: calc(100vh - $navigation-height);
+    border: 0;
+  }
+}

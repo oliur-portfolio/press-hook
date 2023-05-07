@@ -1,0 +1,350 @@
+/*
+
+  General purpose elements on the homepage
+
+  Blocks:
+  .home-page - the main element class, no styles
+
+  Elements:
+  __content-wrapper - an wrapper used inside jumbotron
+  __title-area - wrapper for the page title
+  __title - section titles
+  __subtitle-area - wrapper for the page subtitle
+  __subtitle - section subtitles
+  __card-row - section with industries cards
+  __small-card - each industry card
+  __card-link - the industry link wrapper
+  __industry-img - the industry image on the card
+  __card-overlay - container for industry title over the image
+  __card-industry-title - the industry title over the image
+  __welcome-brand-modal - the welcome modal when brand user without brand logs in
+  __welcome-container - welcome modal container
+  __welcome-dialog - welcome modal dialog
+  __welcome-add-brand - the add brand button overlaying "My Brands" menu button
+  __welcome-add-brand-title - the "My brands" text
+  __welcome-add-brand-button - the red plus sign image
+  __welcome-arrow - the red arrow overlaying the message
+  __welcome-message - the message container
+  __welcome-message-content - the message text
+  __marketing - the marketing sectaion (unauthenticated users)
+  __text-section - a text section (used on marketing)
+  __text - the text on a text section
+  __image-section - the image section (used on marketing)
+  __image-stack - the image composition (used on marketing)
+  __image-stack-top
+  __image-stack-bottom
+  __image-stack-top-left
+  __image-stack-bottom-left
+          - different positions for the image composition
+  __accent-image - the press hook quote image on the background (used on testimonials)
+  __logos-section - media logos under testimonials
+  __logo - eacho logo on logos section
+
+*/
+
+/** @define home-page **/
+.home-page {
+    // .home-page__content-wrapper
+    &__content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: $max-width;
+        margin-bottom: 98px;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-right: auto;
+        margin-left: auto;
+
+        @media screen and (max-width: $tablet) {
+            padding: 0;
+        }
+
+        &--cards-row {
+            height: 267px;
+
+            @media screen and (max-width: $tablet) {
+                height: 220px;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // .home-page__title-area
+    &__title-area {
+        display: flex;
+        flex-direction: column;
+        margin-top: 120px;
+        margin-bottom: 48px;
+    }
+
+    // .home-page__title
+    &__title {
+        font-family: $canela;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 48px;
+        line-height: 48px;
+        text-align: center;
+
+        &--marketing {
+            text-align: left;
+            font-family: $chiswick;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 14px;
+            margin-bottom: 16px;
+        }
+    }
+
+    // .home-page__subtitle-area
+    &__subtitle-area {
+        width: 100%;
+        margin-top: -30px;
+    }
+
+    // .home-page__subtitle
+    &__subtitle {
+        font-family: $canela;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+
+        &--marketing {
+            text-align: left;
+            font-size: 28px;
+            line-height: 32px;
+            margin-bottom: 24px;
+        }
+    }
+
+    // .home-page__card-row
+    &__card-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: auto;
+        background: url("../../../../../../config/static/images/svg/scribbles.svg");
+        height: 102%;
+        background-position: 50% 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @media screen and (max-width: $tablet) {
+            background: url("../../../../../../config/static/images/svg/scribble-mobile.svg");
+            height: 100%;
+            align-items: initial;
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: auto;
+            margin: 0;
+        }
+    }
+
+    // .home-page__small-card
+    &__small-card {
+        margin: 0 8px;
+        border-radius: 2px;
+        position: relative;
+        top: 0;
+        transition: top ease 0.25s;
+
+        &:hover {
+            top: -10px;
+        }
+
+        @media screen and (max-width: $tablet) {
+            margin: 0;
+        }
+
+        &:nth-child(odd) {
+            margin-top: 70px;
+
+            @media screen and (max-width: $tablet) {
+                margin-top: 20px;
+            }
+        }
+
+        @media screen and (max-width: $tablet) {
+            // on mobile view, display only 3 elements (hide from the 4th and following)
+            &:nth-child(n + 4) {
+                display: none;
+            }
+        }
+    }
+
+    // .home-page__card-link
+    &__card-link {
+        text-decoration: none !important;
+        color: $black;
+
+        &:hover {
+            color: $black;
+        }
+    }
+
+    // .home-page__industry-img
+    &__industry-img {
+        display: block;
+        max-width: 149px;
+        width: 100%;
+        height: 182px;
+        object-fit: cover;
+        border-radius: 2px;
+
+        @media screen and (max-width: $tablet) {
+            max-width: 107.18px;
+            width: 100%;
+            height: 130.57px;
+        }
+    }
+
+    // .home-page__card-overlay
+    &__card-overlay {
+        background: rgb(255 250 245 / 80%);
+        border-radius: 4px;
+        transition: 0.5s ease;
+        padding: 6px;
+        opacity: 1;
+        justify-content: center;
+
+        // might need to find a better solution
+        position: relative;
+        bottom: 45px;
+        width: fit-content;
+        margin: auto;
+    }
+
+    // .home-page__card-brand-title
+    &__card-industry-title {
+        font-family: $chiswick;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: $black;
+        margin: 0;
+        min-height: 0;
+    }
+
+    // .home-page__marketing
+    &__marketing {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 50px;
+
+        // .home-page__marketing--reverse
+        &--reverse {
+            flex-direction: row-reverse;
+        }
+
+        // change for column on mobile view
+        @media screen and (max-width: $tablet) {
+            flex-direction: column;
+        }
+    }
+
+    // .home-page__text-section
+    &__text-section {
+        flex: 50%;
+    }
+
+    // .home-page__text
+    &__text {
+        font-family: $chiswick;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 28px;
+        max-width: 555px;
+        margin-bottom: 30px;
+    }
+
+    // .home-page__image-section
+    &__image-section {
+        flex: 25%;
+
+        @media screen and (max-width: $tablet) {
+            margin-top: 25px;
+            overflow-x: hidden;
+        }
+
+        // .home-page__image-section--reverse
+        &--reverse {
+            flex: 50%;
+        }
+    }
+
+    // .home-page__image-stack
+    &__image-stack {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        position: relative;
+    }
+
+    // .home-page__image-stack-top
+    &__image-stack-top {
+        grid-column: 1 / span 8;
+        grid-row: 1;
+        z-index: 1;
+
+        @media screen and (max-width: $tablet) {
+            grid-column: 3 / span 8;
+        }
+    }
+
+    // .home-page__image-stack-bottom
+    &__image-stack-bottom {
+        grid-column: 4 / -1;
+        grid-row: 1;
+        padding-top: 20%;
+
+        @media screen and (max-width: $tablet) {
+            grid-column: 6 / -1;
+        }
+    }
+
+    // .home-page__image-stack-top-left
+    &__image-stack-top-left {
+        grid-column: 3 / -1;
+        grid-row: 1;
+        z-index: 1;
+    }
+
+    // .home-page__image-stack-bottomm-left
+    &__image-stack-bottom-left {
+        grid-column: 1 / span 8;
+        grid-row: 1;
+        padding-top: 20%;
+    }
+
+    // .home-page__accent-image
+    &__accent-image {
+        position: absolute;
+        margin-top: -20px;
+        margin-left: -9px;
+    }
+
+    // .home-page__logos-section
+    &__logos-section {
+        position: absolute;
+        bottom: 25px;
+
+        @media screen and (max-width: $tablet) {
+            bottom: 15px;
+        }
+    }
+
+    // .home-page__logo
+    &__logo {
+        margin: 0 18px;
+
+        @media screen and (max-width: $tablet) {
+            &:nth-of-type(n + 3) {
+                display: none;
+            }
+        }
+    }
+}
