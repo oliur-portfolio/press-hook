@@ -365,7 +365,12 @@
         height: 606px;
 
         @media screen and (max-width: $desktop) {
-            height: 1850px;
+            height: 1472px;
+            margin-top: 30px;
+        }
+
+        @media screen and (max-width: $tablet) {
+            height: 1448px;
             margin-top: 30px;
         }
 
