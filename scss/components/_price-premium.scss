@@ -1,6 +1,10 @@
 /** @define price-premium-area */
 .price-premium-area {
     overflow: hidden;
+
+    &--hide {
+        display: none;
+    }
 }
 
 /** @define price-premium */

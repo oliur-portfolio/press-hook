@@ -1,26 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const priceTabBtns = document.querySelectorAll(".price-tab__nav-button");
-    const priceTabCards = document.querySelectorAll(".price-tab__cards");
-    const stickyPriceTabBtns = document.querySelectorAll(
-        ".sticky-price-tab__nav-button"
+    // Sticky Price effect Items
+    const stickyPriceArea = document.querySelector(".sticky-price-area");
+    const priceCardsActiveTab = document.querySelector(
+        ".price-tab__cards--show"
     );
-    const stickyPriceTabCards = document.querySelectorAll(
-        ".sticky-price__cards"
-    );
-    const offerTabBtns = document.querySelectorAll(".price-offer__nav-button");
-    const offerTabs = document.querySelectorAll(".price-offer__tab");
-    const offerTabsMobile = document.querySelectorAll(
-        ".price-offer__tab-mobile"
-    );
-    const planTabsMobile = document.querySelectorAll(
-        ".price-offer__tab-mobile-plan"
-    );
-    const offerTabsName = document.querySelector(
-        ".price-offer__nav-heading-name"
-    );
-    const priceTabCard = document.querySelectorAll(".price-tab__card");
-    const stickyPriceTabCard = document.querySelectorAll(".sticky-price__card");
+    const priceTabsContainer = document.querySelector(".price-tab__container");
+    const priceOfferContainer = document.querySelector(".price-offer__content");
 
+    // Toggle Price
+    const stickyPriceTabCard = document.querySelectorAll(".sticky-price__card");
+    const priceTabCard = document.querySelectorAll(".price-tab__card");
     const priceCheckInput = document.querySelector(
         ".price-billed-checkbox__input"
     );
@@ -31,626 +20,53 @@ document.addEventListener("DOMContentLoaded", () => {
     const stickyBilledTexts = document.querySelectorAll(
         ".sticky-price-tab__nav-billed-text"
     );
-    const priceTabContainer = document.querySelector(".price-tab__container");
 
-    const pricePremiumSection = document.querySelector(".price-premium-area");
+    // Price Tab Effect
+    const priceTabsContainerTop = priceTabsContainer.offsetTop;
+    const priceTabsHeight = priceCardsActiveTab.offsetHeight;
+    const priceTabsEnd = priceTabsContainerTop + priceTabsHeight;
 
-    const priceCardsContainer = document.querySelector(".price-tab__container");
-    const offerContainer = document.querySelector(".price-offer__content");
-    const offerContainerMobile = document.querySelector(
-        ".price-offer__content-mobile"
+    const priceTabButtons = document.querySelectorAll(".price-tab__nav-button");
+    const priceTabs = document.querySelectorAll(".price-tab__cards");
+    const stickyPriceTabButtons = document.querySelectorAll(
+        ".sticky-price-tab__nav-button"
     );
-    const plansContainerMobile = document.querySelector(
-        ".price-offer__tab-mobile-plans"
+    const stickyPriceTabs = document.querySelectorAll(".sticky-price__cards");
+
+    const offerTabButtons = document.querySelectorAll(
+        ".price-offer__nav-button"
     );
+    const offerPriceTabs = document.querySelectorAll(".price-offer__tab");
 
-    // Sticky Price effect Items
-    const stickyPriceCards = document.querySelector(".sticky-price-area");
-    const priceCardsActive = document.querySelector(".price-tab__cards--show");
-
-    const priceCardsContainerTop = priceCardsContainer.offsetTop;
-    const priceCardsHeight = priceCardsActive.offsetHeight;
-    const priceCardEnd = priceCardsContainerTop + priceCardsHeight;
-
-    // Set PriceCard Container Height
-    const priceHeightChange = (cards, cardsClass, elem) => {
-        cards.forEach((item) => {
-            if (item.classList.contains(cardsClass)) {
-                elem.style.height = `${item.offsetHeight}px`;
-            }
-
-            if (item.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = item.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                offerPlans.forEach((plans) => {
-                    if (
-                        plans.classList.contains(
-                            "price-offer__tab-mobile-plan--show"
-                        )
-                    ) {
-                        offerContainerMobile.style.height = `${
-                            plans.offsetHeight + 100
-                        }px`;
-
-                        console.log(plans.offsetHeight);
-                    }
-                });
-            }
-        });
-    };
-
-    // PriceTab Height Set
-    priceHeightChange(
-        priceTabCards,
-        "price-tab__cards--show",
-        priceCardsContainer
+    const offerTabNames = document.querySelectorAll(
+        ".price-offer__nav-heading-name"
     );
 
-    // OfferTab Height Set
-    priceHeightChange(offerTabs, "price-offer__tab--show", offerContainer);
-
-    // OfferTab mobile Height Set
-    priceHeightChange(
-        offerTabsMobile,
-        "price-offer__tab-mobile--show",
-        offerContainerMobile
+    const offerTabButtonsContainer = document.querySelector(
+        ".price-offer__nav-buttons"
     );
 
-    // Mobile Offer Slide
-
-    let brandPlanMobileIndex = 0;
-    let expertPlanMobileIndex = 0;
-    let agencyPlanMobileIndex = 0;
-
-    function mobileBrandPlans(index) {
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = tabs.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                const mobileOfferName = tabs.querySelector(
-                    ".price-offer__tab-mobile-heading-text"
-                );
-
-                offerPlans.forEach((planTab) => {
-                    planTab.classList.remove(
-                        "price-offer__tab-mobile-plan--show"
-                    );
-                });
-
-                offerPlans[index].classList.add(
-                    "price-offer__tab-mobile-plan--show"
-                );
-
-                if (index === 1) {
-                    mobileOfferName.textContent = "Pro";
-                } else if (index === 2) {
-                    mobileOfferName.textContent = "Premium";
-                } else {
-                    mobileOfferName.textContent = "Basic";
-                }
-
-                priceHeightChange(
-                    offerTabsMobile,
-                    "price-offer__tab-mobile--show",
-                    offerContainerMobile
-                );
-            }
-        });
-    }
-
-    function mobileExpertPlans(index) {
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = tabs.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                const mobileOfferName = tabs.querySelector(
-                    ".price-offer__tab-mobile-heading-text"
-                );
-
-                offerPlans.forEach((planTab) => {
-                    planTab.classList.remove(
-                        "price-offer__tab-mobile-plan--show"
-                    );
-                });
-
-                offerPlans[index].classList.add(
-                    "price-offer__tab-mobile-plan--show"
-                );
-
-                if (index === 1) {
-                    mobileOfferName.textContent = "Pro";
-                } else if (index === 2) {
-                    mobileOfferName.textContent = "Premium";
-                } else {
-                    mobileOfferName.textContent = "Basic";
-                }
-
-                priceHeightChange(
-                    offerTabsMobile,
-                    "price-offer__tab-mobile--show",
-                    offerContainerMobile
-                );
-            }
-        });
-    }
-
-    function mobileAgencyPlans(index) {
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = tabs.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                const mobileOfferName = tabs.querySelector(
-                    ".price-offer__tab-mobile-heading-text"
-                );
-
-                offerPlans.forEach((planTab) => {
-                    planTab.classList.remove(
-                        "price-offer__tab-mobile-plan--show"
-                    );
-                });
-
-                offerPlans[index].classList.add(
-                    "price-offer__tab-mobile-plan--show"
-                );
-
-                if (index === 1) {
-                    mobileOfferName.textContent = "Pro";
-                } else if (index === 2) {
-                    mobileOfferName.textContent = "Premium";
-                } else {
-                    mobileOfferName.textContent = "Basic";
-                }
-
-                priceHeightChange(
-                    offerTabsMobile,
-                    "price-offer__tab-mobile--show",
-                    offerContainerMobile
-                );
-            }
-        });
-    }
-
-    const brandPlanLeftArrow = document.querySelector(
-        ".price-offer__tab-mobile--brand .price-offer__tab-mobile-heading-arrow--left"
-    );
-
-    const brandPlanRightArrow = document.querySelector(
-        ".price-offer__tab-mobile--brand .price-offer__tab-mobile-heading-arrow--right"
-    );
-
-    const expertPlanLeftArrow = document.querySelector(
-        ".price-offer__tab-mobile--expert .price-offer__tab-mobile-heading-arrow--left"
-    );
-
-    const expertPlanRightArrow = document.querySelector(
-        ".price-offer__tab-mobile--expert .price-offer__tab-mobile-heading-arrow--right"
-    );
-
-    const agencyPlanLeftArrow = document.querySelector(
-        ".price-offer__tab-mobile--agency .price-offer__tab-mobile-heading-arrow--left"
-    );
-
-    const agencyPlanRightArrow = document.querySelector(
-        ".price-offer__tab-mobile--agency .price-offer__tab-mobile-heading-arrow--right"
-    );
-
-    const defaultSetMobilePlan = (currentIndex, arrowItem, targetItem) => {
-        if (currentIndex === 0) {
-            arrowItem.classList.add(
-                "price-offer__tab-mobile-heading-arrow--disable"
-            );
-            arrowItem.disabled = true;
-        }
-    };
-
-    defaultSetMobilePlan(brandPlanMobileIndex, brandPlanLeftArrow);
-    defaultSetMobilePlan(expertPlanMobileIndex, expertPlanLeftArrow);
-    defaultSetMobilePlan(agencyPlanMobileIndex, agencyPlanLeftArrow);
-
-    brandPlanRightArrow.addEventListener("click", () => {
-        brandPlanLeftArrow.classList.remove(
-            "price-offer__tab-mobile-heading-arrow--disable"
-        );
-        brandPlanLeftArrow.disabled = false;
-
-        brandPlanMobileIndex++;
-
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = tabs.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                if (brandPlanMobileIndex > offerPlans.length - 2) {
-                    brandPlanRightArrow.classList.add(
-                        "price-offer__tab-mobile-heading-arrow--disable"
-                    );
-                    brandPlanRightArrow.disabled = true;
-                }
-
-                mobileBrandPlans(brandPlanMobileIndex);
-            }
-        });
-    });
-
-    brandPlanLeftArrow.addEventListener("click", () => {
-        brandPlanRightArrow.classList.remove(
-            "price-offer__tab-mobile-heading-arrow--disable"
-        );
-        brandPlanRightArrow.disabled = false;
-
-        brandPlanMobileIndex--;
-
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                if (brandPlanMobileIndex === 0) {
-                    brandPlanLeftArrow.classList.add(
-                        "price-offer__tab-mobile-heading-arrow--disable"
-                    );
-                    brandPlanLeftArrow.disabled = true;
-                }
-
-                mobileBrandPlans(brandPlanMobileIndex);
-            }
-        });
-    });
-
-    expertPlanRightArrow.addEventListener("click", () => {
-        expertPlanLeftArrow.classList.remove(
-            "price-offer__tab-mobile-heading-arrow--disable"
-        );
-        expertPlanLeftArrow.disabled = false;
-
-        expertPlanMobileIndex++;
-
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = tabs.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                if (expertPlanMobileIndex > offerPlans.length - 2) {
-                    expertPlanRightArrow.classList.add(
-                        "price-offer__tab-mobile-heading-arrow--disable"
-                    );
-                    expertPlanRightArrow.disabled = true;
-                }
-
-                mobileExpertPlans(expertPlanMobileIndex);
-            }
-        });
-    });
-
-    expertPlanLeftArrow.addEventListener("click", () => {
-        expertPlanRightArrow.classList.remove(
-            "price-offer__tab-mobile-heading-arrow--disable"
-        );
-        expertPlanRightArrow.disabled = false;
-
-        expertPlanMobileIndex--;
-
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                if (expertPlanMobileIndex === 0) {
-                    expertPlanLeftArrow.classList.add(
-                        "price-offer__tab-mobile-heading-arrow--disable"
-                    );
-                    expertPlanLeftArrow.disabled = true;
-                }
-
-                mobileExpertPlans(expertPlanMobileIndex);
-            }
-        });
-    });
-
-    agencyPlanRightArrow.addEventListener("click", () => {
-        agencyPlanLeftArrow.classList.remove(
-            "price-offer__tab-mobile-heading-arrow--disable"
-        );
-        agencyPlanLeftArrow.disabled = false;
-
-        agencyPlanMobileIndex++;
-
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                const offerPlans = tabs.querySelectorAll(
-                    ".price-offer__tab-mobile-plan"
-                );
-
-                if (agencyPlanMobileIndex > offerPlans.length - 2) {
-                    agencyPlanRightArrow.classList.add(
-                        "price-offer__tab-mobile-heading-arrow--disable"
-                    );
-                    agencyPlanRightArrow.disabled = true;
-                }
-
-                mobileAgencyPlans(agencyPlanMobileIndex);
-            }
-        });
-    });
-
-    agencyPlanLeftArrow.addEventListener("click", () => {
-        agencyPlanRightArrow.classList.remove(
-            "price-offer__tab-mobile-heading-arrow--disable"
-        );
-        agencyPlanRightArrow.disabled = false;
-
-        agencyPlanMobileIndex--;
-
-        offerTabsMobile.forEach((tabs) => {
-            if (tabs.classList.contains("price-offer__tab-mobile--show")) {
-                if (agencyPlanMobileIndex === 0) {
-                    agencyPlanLeftArrow.classList.add(
-                        "price-offer__tab-mobile-heading-arrow--disable"
-                    );
-                    agencyPlanLeftArrow.disabled = true;
-                }
-
-                mobileAgencyPlans(agencyPlanMobileIndex);
-            }
-        });
-    });
+    const pricePremiumArea = document.querySelector(".price-premium-area");
 
     // Sticky Price Scroll
     window.addEventListener("scroll", () => {
         const pageScrollOffset = window.pageYOffset;
 
-        if (pageScrollOffset > priceCardEnd) {
-            stickyPriceCards.classList.add("sticky-price-area--show");
+        if (pageScrollOffset > priceTabsEnd) {
+            stickyPriceArea.classList.add("sticky-price-area--show");
         } else {
-            stickyPriceCards.classList.remove("sticky-price-area--show");
+            stickyPriceArea.classList.remove("sticky-price-area--show");
         }
     });
 
-    // Price Tabs Function
-    const priceTabChange = (priceBtns) => {
-        priceBtns.forEach((tabBtn, index) => {
-            tabBtn.addEventListener("click", () => {
-                const priceTabBtnClass = tabBtn.classList.contains(
-                    "price-tab__nav-button"
-                );
-                const stickyPriceTabBtnClass = tabBtn.classList.contains(
-                    "sticky-price-tab__nav-button"
-                );
-
-                // Remove active class from all tab buttons and contents
-                priceTabBtns.forEach((btn) =>
-                    btn.classList.remove("price-tab__nav-button--active")
-                );
-                stickyPriceTabBtns.forEach((btn) =>
-                    btn.classList.remove("sticky-price-tab__nav-button--active")
-                );
-                offerTabBtns.forEach((btn) =>
-                    btn.classList.remove("price-offer__nav-button--active")
-                );
-
-                priceTabCards.forEach((content) =>
-                    content.classList.remove("price-tab__cards--show")
-                );
-                stickyPriceTabCards.forEach((content) =>
-                    content.classList.remove("sticky-price__cards--show")
-                );
-                offerTabs.forEach((content) =>
-                    content.classList.remove("price-offer__tab--show")
-                );
-                offerTabsMobile.forEach((content) =>
-                    content.classList.remove("price-offer__tab-mobile--show")
-                );
-
-                // Add active class in selected tab buttons and contents
-                if (priceTabBtnClass) {
-                    if (index === 1) {
-                        offerTabBtns[0].textContent = "Brand";
-                        offerTabBtns[1].textContent = "Agency";
-                        offerTabsName.textContent = "expert";
-                        pricePremiumSection.style.display = "none";
-                        priceTabContainer.classList.remove(
-                            "price-tab__container--no-brand"
-                        );
-                    } else if (index === 2) {
-                        offerTabBtns[0].textContent = "Brand";
-                        offerTabBtns[1].textContent = "Expert";
-                        offerTabsName.textContent = "agency";
-                        pricePremiumSection.style.display = "none";
-                        priceTabContainer.classList.remove(
-                            "price-tab__container--no-brand"
-                        );
-                    } else {
-                        offerTabBtns[0].textContent = "Expert";
-                        offerTabBtns[1].textContent = "Agency";
-                        offerTabsName.textContent = "brand";
-                        pricePremiumSection.style.display = "block";
-                        priceTabContainer.classList.add(
-                            "price-tab__container--no-brand"
-                        );
-                    }
-
-                    tabBtn.classList.add("price-tab__nav-button--active");
-                    stickyPriceTabBtns[index].classList.add(
-                        "sticky-price-tab__nav-button--active"
-                    );
-
-                    priceTabCards[index].classList.add(
-                        "price-tab__cards--show"
-                    );
-                    stickyPriceTabCards[index].classList.add(
-                        "sticky-price__cards--show"
-                    );
-                    offerTabs[index].classList.add("price-offer__tab--show");
-                    offerTabsMobile[index].classList.add(
-                        "price-offer__tab-mobile--show"
-                    );
-                } else if (stickyPriceTabBtnClass) {
-                    if (index === 1) {
-                        offerTabBtns[0].textContent = "Brand";
-                        offerTabBtns[1].textContent = "Agency";
-                        offerTabsName.textContent = "expert";
-                        pricePremiumSection.style.display = "none";
-                        priceTabContainer.classList.remove(
-                            "price-tab__container--no-brand"
-                        );
-                    } else if (index === 2) {
-                        offerTabBtns[0].textContent = "Brand";
-                        offerTabBtns[1].textContent = "Expert";
-                        offerTabsName.textContent = "agency";
-                        pricePremiumSection.style.display = "none";
-                        priceTabContainer.classList.remove(
-                            "price-tab__container--no-brand"
-                        );
-                    } else {
-                        offerTabBtns[0].textContent = "Expert";
-                        offerTabBtns[1].textContent = "Agency";
-                        offerTabsName.textContent = "brand";
-                        pricePremiumSection.style.display = "block";
-                        priceTabContainer.classList.add(
-                            "price-tab__container--no-brand"
-                        );
-                    }
-
-                    tabBtn.classList.add(
-                        "sticky-price-tab__nav-button--active"
-                    );
-                    priceTabBtns[index].classList.add(
-                        "price-tab__nav-button--active"
-                    );
-
-                    priceTabCards[index].classList.add(
-                        "price-tab__cards--show"
-                    );
-                    stickyPriceTabCards[index].classList.add(
-                        "sticky-price__cards--show"
-                    );
-                    offerTabs[index].classList.add("price-offer__tab--show");
-                    offerTabsMobile[index].classList.add(
-                        "price-offer__tab-mobile--show"
-                    );
-                } else {
-                    const offerActiveTabName = tabBtn.textContent.toLowerCase();
-
-                    if (offerActiveTabName === "expert") {
-                        priceTabBtns[1].classList.add(
-                            "price-tab__nav-button--active"
-                        );
-                        stickyPriceTabBtns[1].classList.add(
-                            "sticky-price-tab__nav-button--active"
-                        );
-                        offerTabBtns[0].textContent = "Brand";
-                        offerTabBtns[1].textContent = "Agency";
-                        offerTabsName.textContent = "expert";
-                        pricePremiumSection.style.display = "none";
-                        priceTabContainer.classList.remove(
-                            "price-tab__container--no-brand"
-                        );
-
-                        priceTabCards[1].classList.add(
-                            "price-tab__cards--show"
-                        );
-                        stickyPriceTabCards[1].classList.add(
-                            "sticky-price__cards--show"
-                        );
-                        offerTabs[1].classList.add("price-offer__tab--show");
-                        offerTabsMobile[1].classList.add(
-                            "price-offer__tab-mobile--show"
-                        );
-                    } else if (offerActiveTabName === "agency") {
-                        priceTabBtns[2].classList.add(
-                            "price-tab__nav-button--active"
-                        );
-                        stickyPriceTabBtns[2].classList.add(
-                            "sticky-price-tab__nav-button--active"
-                        );
-                        offerTabBtns[0].textContent = "Brand";
-                        offerTabBtns[1].textContent = "Expert";
-                        offerTabsName.textContent = "agency";
-                        pricePremiumSection.style.display = "none";
-                        priceTabContainer.classList.remove(
-                            "price-tab__container--no-brand"
-                        );
-
-                        priceTabCards[2].classList.add(
-                            "price-tab__cards--show"
-                        );
-                        stickyPriceTabCards[2].classList.add(
-                            "sticky-price__cards--show"
-                        );
-                        offerTabs[2].classList.add("price-offer__tab--show");
-                        offerTabsMobile[2].classList.add(
-                            "price-offer__tab-mobile--show"
-                        );
-                    } else {
-                        priceTabBtns[0].classList.add(
-                            "price-tab__nav-button--active"
-                        );
-                        stickyPriceTabBtns[0].classList.add(
-                            "sticky-price-tab__nav-button--active"
-                        );
-                        offerTabBtns[0].textContent = "Expert";
-                        offerTabBtns[1].textContent = "Agency";
-                        offerTabsName.textContent = "brand";
-                        pricePremiumSection.style.display = "block";
-                        priceTabContainer.classList.add(
-                            "price-tab__container--no-brand"
-                        );
-
-                        priceTabCards[0].classList.add(
-                            "price-tab__cards--show"
-                        );
-                        stickyPriceTabCards[0].classList.add(
-                            "sticky-price__cards--show"
-                        );
-                        offerTabs[0].classList.add("price-offer__tab--show");
-                        offerTabsMobile[0].classList.add(
-                            "price-offer__tab-mobile--show"
-                        );
-                    }
-                }
-
-                // PriceTab Height Set
-                priceHeightChange(
-                    priceTabCards,
-                    "price-tab__cards--show",
-                    priceCardsContainer
-                );
-
-                // OfferTab Height Set
-                priceHeightChange(
-                    offerTabs,
-                    "price-offer__tab--show",
-                    offerContainer
-                );
-
-                priceHeightChange(
-                    planTabsMobile,
-                    "price-offer__tab-mobile-plan--show",
-                    plansContainerMobile
-                );
-
-                // OfferTab mobile Height Set
-                priceHeightChange(
-                    offerTabsMobile,
-                    "price-offer__tab-mobile--show",
-                    offerContainerMobile
-                );
-            });
+    // Set Card/Offer Container Height Function
+    const priceHeightChange = (cards, cardsClass, elem) => {
+        cards.forEach((item) => {
+            if (item.classList.contains(cardsClass)) {
+                elem.style.height = `${item.offsetHeight}px`;
+            }
         });
     };
-
-    // Price Card Tabs
-    priceTabChange(priceTabBtns);
-
-    // Sticky Price Card Tabs
-    priceTabChange(stickyPriceTabBtns);
-
-    // Offer Tabs
-    priceTabChange(offerTabBtns);
 
     // Billed text Toggle Function
     const toggleBilledTexts = () => {
@@ -744,4 +160,358 @@ document.addEventListener("DOMContentLoaded", () => {
         ".sticky-price__card-price",
         "sticky-price__card-price--annually"
     );
+
+    // Offer Plan Mobile Slide Index
+    let currentOfferBrandPlanIndex = 0;
+    let currentOfferExpertPlanIndex = 0;
+    let currentOfferAgencyPlanIndex = 0;
+
+    // Offer Plans Function
+    const handleOfferPlans = (index) => {
+        offerPriceTabs.forEach((offerTab) => {
+            if (offerTab.classList.contains("price-offer__tab--show")) {
+                const offerPlanNames = offerTab.querySelectorAll(
+                    ".price-offer__tab-mobile-heading-name"
+                );
+
+                const offerPlans = offerTab.querySelectorAll(
+                    ".price-offer__tab-right .price-offer__plan"
+                );
+
+                offerPlanNames.forEach((offerTitle) =>
+                    offerTitle.classList.remove(
+                        "price-offer__tab-mobile-heading-name--show"
+                    )
+                );
+                offerPlans.forEach((offerPlan) =>
+                    offerPlan.classList.remove("price-offer__plan--show")
+                );
+
+                offerPlanNames[index].classList.add(
+                    "price-offer__tab-mobile-heading-name--show"
+                );
+                offerPlans[index].classList.add("price-offer__plan--show");
+            }
+        });
+    };
+
+    // Mobile Offer Plans arrow button Function
+    const handleOfferArrow = (currentIndex) => {
+        offerPriceTabs.forEach((offerTab) => {
+            if (offerTab.classList.contains("price-offer__tab--show")) {
+                const offerPlanLeftArrow = offerTab.querySelector(
+                    ".price-offer__tab-mobile-heading-arrow--left"
+                );
+                const offerPlanRightArrow = offerTab.querySelector(
+                    ".price-offer__tab-mobile-heading-arrow--right"
+                );
+
+                offerPlanRightArrow.classList.remove(
+                    "price-offer__tab-mobile-heading-arrow--disable"
+                );
+
+                // Handle Offer Right arrow
+                offerPlanRightArrow.addEventListener("click", () => {
+                    offerPlanLeftArrow.classList.remove(
+                        "price-offer__tab-mobile-heading-arrow--disable"
+                    );
+
+                    offerPriceTabs.forEach((item) => {
+                        if (item.classList.contains("price-offer__tab--show")) {
+                            const offerPlans = item.querySelectorAll(
+                                ".price-offer__tab-right .price-offer__plan"
+                            );
+
+                            if (currentIndex < offerPlans.length - 1) {
+                                currentIndex++;
+                                handleOfferPlans(currentIndex);
+
+                                if (currentIndex === offerPlans.length - 1) {
+                                    offerPlanRightArrow.classList.add(
+                                        "price-offer__tab-mobile-heading-arrow--disable"
+                                    );
+                                }
+                            }
+                        }
+                    });
+
+                    // Set Price Tab Container Height
+                    priceHeightChange(
+                        priceTabs,
+                        "price-tab__cards--show",
+                        priceTabsContainer
+                    );
+
+                    // Set Offer Tab Container Height
+                    priceHeightChange(
+                        offerPriceTabs,
+                        "price-offer__tab--show",
+                        priceOfferContainer
+                    );
+                });
+
+                // Handle Offer Left arrow
+                offerPlanLeftArrow.addEventListener("click", () => {
+                    offerPlanRightArrow.classList.remove(
+                        "price-offer__tab-mobile-heading-arrow--disable"
+                    );
+
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        handleOfferPlans(currentIndex);
+
+                        if (currentIndex === 0) {
+                            offerPlanLeftArrow.classList.add(
+                                "price-offer__tab-mobile-heading-arrow--disable"
+                            );
+                        }
+                    }
+
+                    // Set Price Tab Container Height
+                    priceHeightChange(
+                        priceTabs,
+                        "price-tab__cards--show",
+                        priceTabsContainer
+                    );
+
+                    // Set Offer Tab Container Height
+                    priceHeightChange(
+                        offerPriceTabs,
+                        "price-offer__tab--show",
+                        priceOfferContainer
+                    );
+                });
+            }
+        });
+    };
+
+    // Mobile Offer Plans arrow button Disable Function
+    const setDefaultDisableArrow = () => {
+        offerPriceTabs.forEach((offerTab) => {
+            if (offerTab.classList.contains("price-offer__tab--show")) {
+                const offerPlanLeftArrow = offerTab.querySelector(
+                    ".price-offer__tab-mobile-heading-arrow--left"
+                );
+
+                offerPlanLeftArrow.classList.add(
+                    "price-offer__tab-mobile-heading-arrow--disable"
+                );
+            }
+        });
+    };
+
+    handleOfferPlans(currentOfferBrandPlanIndex);
+    handleOfferArrow(currentOfferBrandPlanIndex);
+    setDefaultDisableArrow();
+
+    // Tab Buttons Specific Item
+    const tabBtnEachItem = (currIndex) => {
+        if (currIndex === 1) {
+            handleOfferPlans(currentOfferExpertPlanIndex);
+            handleOfferArrow(currentOfferExpertPlanIndex);
+            pricePremiumArea.classList.add("price-premium-area--hide");
+            priceTabsContainer.classList.remove(
+                "price-tab__container--no-brand"
+            );
+        } else if (currIndex === 2) {
+            handleOfferPlans(currentOfferAgencyPlanIndex);
+            handleOfferArrow(currentOfferAgencyPlanIndex);
+            pricePremiumArea.classList.add("price-premium-area--hide");
+            priceTabsContainer.classList.remove(
+                "price-tab__container--no-brand"
+            );
+        } else {
+            handleOfferPlans(currentOfferBrandPlanIndex);
+            handleOfferArrow(currentOfferBrandPlanIndex);
+            pricePremiumArea.classList.remove("price-premium-area--hide");
+            priceTabsContainer.classList.add("price-tab__container--no-brand");
+        }
+    };
+
+    // Tab Change Function
+    const tabChange = (tabBtns) => {
+        tabBtns.forEach((tabBtn, index) => {
+            tabBtn.addEventListener("click", () => {
+                const priceTabBtnClass = tabBtn.classList.contains(
+                    "price-tab__nav-button"
+                );
+                const stickyPriceTabBtnClass = tabBtn.classList.contains(
+                    "sticky-price-tab__nav-button"
+                );
+
+                // Remove tab Buttons Class
+                priceTabButtons.forEach((btn) =>
+                    btn.classList.remove("price-tab__nav-button--active")
+                );
+                stickyPriceTabButtons.forEach((btn) =>
+                    btn.classList.remove("sticky-price-tab__nav-button--active")
+                );
+                offerTabButtons.forEach((btn) =>
+                    btn.classList.remove("price-offer__nav-button--active")
+                );
+
+                offerTabButtonsContainer.classList.remove(
+                    "price-offer__nav-buttons--remove-last-or"
+                );
+
+                // Remove tab Class
+                priceTabs.forEach((tab) =>
+                    tab.classList.remove("price-tab__cards--show")
+                );
+                stickyPriceTabs.forEach((tab) =>
+                    tab.classList.remove("sticky-price__cards--show")
+                );
+                offerPriceTabs.forEach((tab) =>
+                    tab.classList.remove("price-offer__tab--show")
+                );
+
+                offerTabNames.forEach((offer) =>
+                    offer.classList.remove(
+                        "price-offer__nav-heading-name--show"
+                    )
+                );
+
+                if (priceTabBtnClass) {
+                    tabBtn.classList.add("price-tab__nav-button--active");
+                    stickyPriceTabButtons[index].classList.add(
+                        "sticky-price-tab__nav-button--active"
+                    );
+                    offerTabButtons[index].classList.add(
+                        "price-offer__nav-button--active"
+                    );
+
+                    priceTabs[index].classList.add("price-tab__cards--show");
+                    stickyPriceTabs[index].classList.add(
+                        "sticky-price__cards--show"
+                    );
+                    offerPriceTabs[index].classList.add(
+                        "price-offer__tab--show"
+                    );
+
+                    offerTabNames[index].classList.add(
+                        "price-offer__nav-heading-name--show"
+                    );
+
+                    if (index === priceTabButtons.length - 1) {
+                        offerTabButtonsContainer.classList.add(
+                            "price-offer__nav-buttons--remove-last-or"
+                        );
+                    }
+
+                    tabBtnEachItem(index);
+                    setDefaultDisableArrow();
+                } else if (stickyPriceTabBtnClass) {
+                    tabBtn.classList.add(
+                        "sticky-price-tab__nav-button--active"
+                    );
+                    priceTabButtons[index].classList.add(
+                        "price-tab__nav-button--active"
+                    );
+                    offerTabButtons[index].classList.add(
+                        "price-offer__nav-button--active"
+                    );
+
+                    priceTabs[index].classList.add("price-tab__cards--show");
+                    stickyPriceTabs[index].classList.add(
+                        "sticky-price__cards--show"
+                    );
+                    offerPriceTabs[index].classList.add(
+                        "price-offer__tab--show"
+                    );
+
+                    offerTabNames[index].classList.add(
+                        "price-offer__nav-heading-name--show"
+                    );
+
+                    if (index === stickyPriceTabButtons.length - 1) {
+                        offerTabButtonsContainer.classList.add(
+                            "price-offer__nav-buttons--remove-last-or"
+                        );
+                    }
+
+                    tabBtnEachItem(index);
+                    setDefaultDisableArrow();
+                } else {
+                    tabBtn.classList.add("price-offer__nav-button--active");
+                    priceTabButtons[index].classList.add(
+                        "price-tab__nav-button--active"
+                    );
+                    stickyPriceTabButtons[index].classList.add(
+                        "sticky-price-tab__nav-button--active"
+                    );
+
+                    priceTabs[index].classList.add("price-tab__cards--show");
+                    stickyPriceTabs[index].classList.add(
+                        "sticky-price__cards--show"
+                    );
+                    offerPriceTabs[index].classList.add(
+                        "price-offer__tab--show"
+                    );
+
+                    offerTabNames[index].classList.add(
+                        "price-offer__nav-heading-name--show"
+                    );
+
+                    if (index === offerTabButtons.length - 1) {
+                        offerTabButtonsContainer.classList.add(
+                            "price-offer__nav-buttons--remove-last-or"
+                        );
+                    }
+
+                    tabBtnEachItem(index);
+                    setDefaultDisableArrow();
+                }
+
+                // Set Price Tab Container Height
+                priceHeightChange(
+                    priceTabs,
+                    "price-tab__cards--show",
+                    priceTabsContainer
+                );
+
+                // Set Offer Tab Container Height
+                priceHeightChange(
+                    offerPriceTabs,
+                    "price-offer__tab--show",
+                    priceOfferContainer
+                );
+            });
+        });
+    };
+
+    // Price Tab Effect
+    tabChange(priceTabButtons);
+
+    // Price Tab Effect
+    tabChange(stickyPriceTabButtons);
+
+    // Price Tab Effect
+    tabChange(offerTabButtons);
+
+    // Set Price Tab Container Height
+    priceHeightChange(priceTabs, "price-tab__cards--show", priceTabsContainer);
+
+    // Set Offer Tab Container Height
+    priceHeightChange(
+        offerPriceTabs,
+        "price-offer__tab--show",
+        priceOfferContainer
+    );
+
+    // Update Set Tab heights on window resize
+    window.addEventListener("resize", () => {
+        // Set Price Tab Container Height
+        priceHeightChange(
+            priceTabs,
+            "price-tab__cards--show",
+            priceTabsContainer
+        );
+
+        // Set Offer Tab Container Height
+        priceHeightChange(
+            offerPriceTabs,
+            "price-offer__tab--show",
+            priceOfferContainer
+        );
+    });
 });
